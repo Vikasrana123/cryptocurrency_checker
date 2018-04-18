@@ -1,7 +1,8 @@
 body .background{
     background-image: url("../img/FotoJet .jpg");
     width: auto;
-    height: 800px;
+    position: relative;
+    height: 620px;
     background-position: center;
     background-size: cover;
 }
@@ -9,4 +10,50 @@ body .background{
     font-weight: 900;
     font-family: "Lato", "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 50px;
+}
+
+#example1 {
+    width: 100%;
+    height: 50px;
+    background-color: #0788f7bd;
+
+    overflow: hidden;
+    position: relative;
+}
+#example1 p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);
+    transform:translateX(100%);
+    /* Apply animation to this element */
+    -moz-animation: example1 50s linear infinite;
+    -webkit-animation: example1 50s linear infinite;
+    animation: example1 50s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+    0%   {
+        -moz-transform: translateX(100%); /* Firefox bug fix */
+        -webkit-transform: translateX(100%); /* Firefox bug fix */
+        transform: translateX(100%);
+    }
+    100% {
+        -moz-transform: translateX(-100%); /* Firefox bug fix */
+        -webkit-transform: translateX(-100%); /* Firefox bug fix */
+        transform: translateX(-100%);
+    }
 }

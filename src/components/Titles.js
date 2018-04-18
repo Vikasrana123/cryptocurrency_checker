@@ -12,7 +12,6 @@ class Titles extends React.Component{
                             <CryptoData/>
                             </div>
                         </div>
-
                 </div>
         );
     }
