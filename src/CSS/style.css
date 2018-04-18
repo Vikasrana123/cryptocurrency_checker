@@ -1,0 +1,12 @@
+body .background{
+    background-image: url("../img/FotoJet .jpg");
+    width: auto;
+    height: 800px;
+    background-position: center;
+    background-size: cover;
+}
+.font{
+    font-weight: 900;
+    font-family: "Lato", "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 50px;
+}
