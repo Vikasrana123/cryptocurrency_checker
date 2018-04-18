@@ -57,3 +57,9 @@ body .background{
         transform: translateX(-100%);
     }
 }
+
+.error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border-radius: 5px;
+}

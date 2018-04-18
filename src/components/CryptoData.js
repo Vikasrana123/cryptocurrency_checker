@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CSS/style.css'
 import {Button ,Table} from 'mdbreact';
 import axios from 'axios';
 
@@ -10,6 +11,8 @@ export default class PersonList extends React.Component {
             showResults: false,
             baseCurrency : '',
             currency : '',
+            error:undefined,
+            wrongData:undefined,
             onClickData: {id : '', symbol : '', name : '', rank : '', price_usd : '', price_btc : '',percent_change_7d: '',percent_change_1h: '',percent_change_24h: '',last_updated: ''}
         }
 
@@ -37,13 +40,44 @@ export default class PersonList extends React.Component {
 
 
     handleSubmit(event) {
+        var isRightCurrency = false;
+
+        this.setState({ wrongData : ''});
+        this.setState({ error : ''});
+
+        if( this.state.currency === '') {
+            this.setState({
+                error:<h4 style={{
+                    fontFamily:'sans-serif',fontSize:'20px' ,
+                    fontWeight:'600' ,marginTop:'10px',
+                    marginBottom:'10px'}}>
+                    Please enter the currency name
+                </h4>
+            });
+            return;
+        }
+
+
         this.state.coinData.map(row => {
-            if (row.symbol === this.state.currency.toUpperCase()) {
+            if (row.symbol === this.state.currency.toUpperCase()  )
+            {
                  this.setState ( {onClickData : row});
                  this.setState ( {showResults : true});
-                }
+                 isRightCurrency = true;
+            }
         });
+
+        if(isRightCurrency === false)
+        {
+            this.setState ( {
+                wrongData : <h4
+                    style={{fontFamily:'sans-serif',fontSize:'20px' ,
+                        fontWeight:'600' ,marginTop:'10px',marginBottom:'10px'}}>
+                    Please enter the right currency name
+                </h4>
+            });
         }
+    }
 
 
     render() {
@@ -88,7 +122,11 @@ export default class PersonList extends React.Component {
                         <td className="text-center">{this.state.onClickData.percent_change_1h}</td>
                     </tr>
                     </tbody>
-                </Table> : null }
+                </Table> : <div className="row error mt-4 justify-content-md-center ">
+                        {this.state.error}
+                        {this.state.wrongData}
+                    </div>
+                }
             </div>
 
         )
